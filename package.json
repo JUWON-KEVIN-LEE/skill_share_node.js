@@ -1,0 +1,25 @@
+{
+  "name": "skill-share",
+  "version": "1.0.0",
+  "description": "skill share node server",
+  "main": "app.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "none",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.5",
+    "node-gcm": "^0.14.9",
+    "socket.io": "^2.0.4"
+  }
+}
