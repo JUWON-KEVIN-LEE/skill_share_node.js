@@ -7,7 +7,7 @@ module.exports = function(app, io) {
     });
 
     // device register
-    app.post('/devices', function(req, res) {
+    app.post('/register', function(req, res) {
 
         // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables
         var deviceName = req.body.deviceName;
@@ -16,14 +16,11 @@ module.exports = function(app, io) {
 
         // type 체크
         if( typeof deviceName == 'undefined' || typeof deviceId == 'undefined' || typeof registrationId == 'undefined' ) {
-            // res.json('invalid type');
             res.send('invalid type');
         } else if( !deviceName.trim() || !deviceId.trim() || !registrationId.trim() ) { // 앞뒤로 공백 제거하고 null 이면
-            // res.json('empty message');
             res.send('empty message');
         } else {
             registerFunction.register( deviceName, deviceId, registrationId, function(result) {
-                // res.json(result);
                 res.send(result);
             });
         }
@@ -35,7 +32,6 @@ module.exports = function(app, io) {
         var registrationId = req.body.registrationId;
 
         sendMessageFunction.sendMessage(message, registrationId, function(result) {
-            // res.json(result);
             res.send(result);
         });
     });

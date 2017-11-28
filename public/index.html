@@ -5,11 +5,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   </head>
   <body>
+
     <!-- message send -->
     <form action="/send" method="post">
       메시지 : <input name="message" type="text" /><br />
       토큰 : <input name="registrationId" type="text" /><br />
       <input value="send" type="submit" />
     </form>
+
+    <form action="/register" method="post">
+      device name : <input name="deviceName" type="text" /><br />
+      device id : <input name="deviceId" type="text" /><br />
+      registration id : <input name="registrationId" type="text" /><br />
+      <input value="register" type="submit" />
+    </form>
+    
   </body>
 </html>

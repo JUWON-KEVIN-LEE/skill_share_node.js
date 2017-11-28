@@ -1,11 +1,12 @@
+// mongo db
+var mongoose = require('mongoose');
+// http 통신
+var request = require('request');
+var device = require('../models/device');
 
 exports.register = function(deviceName, deviceId, registrationId, callback) {
-    console.log('device name : ' + deviceName + 
-    ', id : ' + deviceId + ', reg_id : ' + registrationId);
 
-    callback('message about success or failure');
-    /*
-    var newDevice = new Device({
+    var newDevice = new device({
         deviceName: deviceName,
         deviceId: deviceId,
         registrationId: registrationId
@@ -23,8 +24,4 @@ exports.register = function(deviceName, deviceId, registrationId, callback) {
             });
         }
     });
-    */
 }
-
-// var mongoose = require('mongoose');
-// var device = require('../models/device');
