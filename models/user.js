@@ -39,9 +39,16 @@ var userSchema = mongoose.Schema({
         discussionId : Schema.Types.ObjectId, 
         classId : Schema.Types.ObjectId, 
         commentTitle : String, 
-        time : Date        
+        time : Date
     }],
-    name : String,
+    project : [{
+        projectId : Schema.Types.ObjectId, 
+        classId : Schema.Types.ObjectId, 
+        projectTitle : String, 
+        likes : Number, 
+        projectThumbnail : String
+    }],
+    registrationId : String
 });
 
 // url / db 이름
