@@ -1,5 +1,6 @@
 var sendMessageFunction = require('../functions/send-message');
-var registerFunction = require('../functions/register-devices');
+var registerDeviceFunction = require('../functions/register-devices');
+var signUpUserFunction = require('../functions/sign-up-users');
 
 module.exports = function(app, io) {
     app.get('/', function(req, res) {
@@ -7,7 +8,7 @@ module.exports = function(app, io) {
     });
 
     // device register
-    app.post('/register', function(req, res) {
+    app.post('/device', function(req, res) {
 
         // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables
         var deviceName = req.body.deviceName;
@@ -18,12 +19,28 @@ module.exports = function(app, io) {
         if( typeof deviceName == 'undefined' || typeof deviceId == 'undefined' || typeof registrationId == 'undefined' ) {
             res.send('invalid type');
         } else if( !deviceName.trim() || !deviceId.trim() || !registrationId.trim() ) { // 앞뒤로 공백 제거하고 null 이면
-            res.send('empty message');
+            res.send('empty');
         } else {
-            registerFunction.register( deviceName, deviceId, registrationId, function(result) {
+            registerDeviceFunction.register( deviceName, deviceId, registrationId, function(result) {
                 res.send(result);
             });
         }
+    });
+
+    app.post('/user', function(req, res) {
+       var email = req.body.email;
+       var password = req.body.password;
+       var name = req.body.name;
+       
+        if( typeof email == 'undefined' || typeof password == 'undefined' || typeof name == 'undefined' ) {
+            res.send('invalid type');
+        } else if( !email.trim() || !password.trim() || !name.trim() ) { // 앞뒤로 공백 제거하고 null 이면
+            res.send('empty');
+        } else {
+            signUpUserFunction.signUp( email, password, name, function(result) {
+                res.send(result);
+        });
+    }
     });
 
     // gcm

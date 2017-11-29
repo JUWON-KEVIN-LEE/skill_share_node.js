@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="utf-8" />
   </head>
   <body>
-
     <!-- message send -->
     <form action="/send" method="post">
       메시지 : <input name="message" type="text" /><br />
@@ -13,12 +13,11 @@
       <input value="send" type="submit" />
     </form>
 
-    <form action="/register" method="post">
-      device name : <input name="deviceName" type="text" /><br />
-      device id : <input name="deviceId" type="text" /><br />
-      registration id : <input name="registrationId" type="text" /><br />
-      <input value="register" type="submit" />
+    <form action="/user" method="post">
+      이메일 : <input name="email" type="text" /><br />
+      비밀번호 : <input name="password" type="text" /><br />
+      이름 : <input name="name" type="text" /><br />
+      <input value="sign up" type="submit" />
     </form>
-    
   </body>
 </html>

@@ -4,17 +4,16 @@ var mongoose = require('mongoose');
 var request = require('request');
 var user = require('../models/user');
 
-exports.register = function(email, password, name, pictureUrl, callback) {
+exports.signUp = function(email, password, name, callback) {
 
     var newUser = new user({
         email : email,
         password : password,
         name : name,
-        pictureUrl : pictureUrl
     });
 
     user.find({email : email}, function(err, users) {
-        if(totalDevices != 0) {
+        if(users.length != 0) {
             callback('already registered email');
         } else {
             newUser.save(function(err) {
