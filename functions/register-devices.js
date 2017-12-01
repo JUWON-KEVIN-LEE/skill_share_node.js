@@ -6,31 +6,64 @@ var device = require('../models/device');
 // user
 var user = require('../models/user');
 
-// TODO 수정해야 됨 logic 을 잘 생각해보자!
-exports.register = function(deviceName, deviceId, registrationId, callback) {
+exports.register = function(userId, deviceName, deviceId, registrationId, callback) {
 
     var newDevice = new device({
+        userId : userId,
         deviceName : deviceName,
         deviceId : deviceId,
         registrationId : registrationId
     });
 
-    device.find({registrationId : registrationId}, function(err, devices) {
-        var totalDevices = devices.length;
-        if(totalDevices == 0) {
+    // [ issue ] device 가 여러 개일수도 있다....
+    device.find({userId : userId}, {registrationId : true}, function(err, device) {
+        if(device.length == 0) {
             newDevice.save(function(err) { 
                 if(!err) {
-                    callback('registraion success');
+                    callback({
+                        result : 'success',
+                        message : 'request : registraion succeeded'
+                    });
                 } else {
-                    callback('registraion failed');
+                    callback({
+                        result : 'success',
+                        message : 'request : registration failed by error & ' + err
+                    });
                 }
             });
+        } else {
+            // 기존에 등록되어 있었으면..
+            if(device.indexOf({registrationId : registrationId}) > -1) {
+                callback({
+                    result : 'failure',
+                    message : 'request : already registered device'
+                });
+            } else {
+                newDevice.save(function(err) { 
+                    if(!err) {
+                        callback({
+                            result : 'success',
+                            message : 'request : registraion succeeded'
+                        });
+                    } else {
+                        callback({
+                            result : 'failure',
+                            message : 'request : registration failed by error & ' + err
+                        });
+                    }
+                });
+            }
         }
     });
 
-    user.find({registrationId : registrationId}, function(err, users) {
-        if(users.length == 0) {
-
-        }
-    });
+    user.findByIdAndUpdate(
+        userId,
+        { $set: {"registraionId" : [registrationId] } },
+        {'new' : true, 'upsert' : true, 'safe' : true},
+        function(err, result) {
+            if(err) {
+                console.log("error : " + err)
+            }   
+            console.log("result : " + result);
+        });
 }

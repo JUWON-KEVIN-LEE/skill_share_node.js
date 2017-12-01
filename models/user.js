@@ -11,16 +11,16 @@ var userSchema = mongoose.Schema({
     followingSkills : [String],
     name : String,
     nickname : String,
-    pictureUrl : String,
+    photoUrl : String,
     following : [{ 
         userId : Schema.Types.ObjectId, 
         name : String, 
-        pictureUrl : String 
+        photoUrl : String 
     }],
     followers : [{
         userId : Schema.Types.ObjectId, 
         name : String, 
-        picture_url : String 
+        photoUrl : String 
     }],
     subsribeClass : [{ 
         classId : Schema.Types.ObjectId, 
@@ -48,7 +48,7 @@ var userSchema = mongoose.Schema({
         likes : Number, 
         projectThumbnail : String
     }],
-    registrationId : String
+    registrationId : [String]
 });
 
 // url / db 이름

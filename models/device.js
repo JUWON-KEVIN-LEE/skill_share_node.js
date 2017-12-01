@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 // Schema type : String, Number, Date, Buffer, Boolean, Mixed, Objectid, Array
 var deviceSchema = mongoose.Schema({
+    userId : String,
     deviceName : String,
     deviceId : String,
     registrationId : String

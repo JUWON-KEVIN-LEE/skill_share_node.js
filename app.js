@@ -8,7 +8,7 @@ var port = 8079;
 // body parser
 var bodyParser = require('body-parser');
 
-// socket.io
+// socket.io for real time data... 쓸 수 있는 곳이 있을까
 var io = require('socket.io');
 
 app.use(express.static(__dirname + '/public'));
