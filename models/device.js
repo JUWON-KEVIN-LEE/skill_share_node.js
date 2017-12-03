@@ -9,7 +9,7 @@ var deviceSchema = mongoose.Schema({
     deviceName : String,
     deviceId : String,
     registrationId : String
-});
+}, {'versionKey' : false});
 
 // url / db 이름
 mongoose.connect('mongodb://localhost:27017/skill-share-db');

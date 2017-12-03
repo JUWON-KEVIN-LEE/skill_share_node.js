@@ -48,8 +48,8 @@ var userSchema = mongoose.Schema({
         likes : Number, 
         projectThumbnail : String
     }],
-    registrationId : [String]
-});
+    registrationId : {type: Array, required: false, dropDups : true}
+}, {'strict' : false, 'versionKey' : false});
 
 // url / db 이름
 mongoose.connect('mongodb://localhost:27017/skill-share-db');
