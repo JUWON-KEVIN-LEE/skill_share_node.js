@@ -2,6 +2,7 @@ var sendMessageFunction = require('../functions/send-message');
 var registerDeviceFunction = require('../functions/register-devices');
 var signUpUserFunction = require('../functions/sign-up-user');
 var signInUserFunction = require('../functions/sign-in-user');
+var streamVideo = require('../functions/stream-video');
 
 module.exports = function(app, io) {
     console.log("hello node");
@@ -82,11 +83,21 @@ module.exports = function(app, io) {
 
     // gcm
     app.post('/send', function(req, res) {
-        var message = req.body.message;
-        var registrationId = req.body.registrationId;
+        var userName = req.body.userName;
+        var time = req.body.time;
+        var resId = req.body.resId;
+        var message = userName + " 님이 회원님의 글을 좋아합니다"
 
-        sendMessageFunction.sendMessage(message, registrationId, function(result) {
-            res.send(result);
+        sendMessageFunction.sendMessage(message, resId, function(result) {
+            res.json(result);
         });
+    });
+
+    app.get('/class/about/:id', function(req, res) {
+        var id = req.params.id;
+    });
+
+    app.get('class/video/:id', function(req, res) {
+        res.send();
     });
 }

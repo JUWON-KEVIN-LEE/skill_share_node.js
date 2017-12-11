@@ -1,20 +1,26 @@
 var gcm = require('node-gcm');
 var server_api_key = 'AIzaSyCqb0GH5XObY3AwpOxBF4JqHTadmbR5esY';
 
-exports.sendMessage = function(message, registrationId, callback) {
+exports.sendMessage = function(message, resId, callback) {
     var message = new gcm.Message({data: {message: message}});
     var registrationIds = [];
-    registrationIds.push(registrationId);
+    registrationIds.push(resId);
     var sender = new gcm.Sender(server_api_key);
     
     sender.send( message, registrationIds, function(err, response) {
 
         if(err) {
             console.log("error : " + err);
-            callback('message send fail');
+            callback({
+                result : 'failure',
+                message : 'response : message send failed by error & ' + err
+            });
         } else {
             console.log("response : " + response);
-            callback('message send success');
+            callback({
+                result : 'success',
+                message : 'response : message send succeed'
+            });
         }
 
     });
