@@ -5,25 +5,24 @@ var Schema = mongoose.Schema;
 
 // Schema type : String, Number, Date, Buffer, Boolean, Mixed, Objectid, Array
 var userSchema = mongoose.Schema({
-    userId : Schema.Types.ObjectId,
     email : String,
     password : String,
     followingSkills : [String],
     name : String,
     nickname : String,
-    photoUrl : String,
+    pictureUrl : String,
     following : [{ 
-        userId : Schema.Types.ObjectId, 
+        userId : String,
         name : String, 
         photoUrl : String 
     }],
     followers : [{
-        userId : Schema.Types.ObjectId, 
+        userId : String, 
         name : String, 
         photoUrl : String 
     }],
     subsribeClass : [{ 
-        classId : Schema.Types.ObjectId, 
+        classId : String,
         title : String, 
         tutorName : String, 
         totalDuration : String,
@@ -36,14 +35,15 @@ var userSchema = mongoose.Schema({
         groupName : String
     }],
     discussion : [{
-        discussionId : Schema.Types.ObjectId, 
-        classId : Schema.Types.ObjectId, 
-        commentTitle : String, 
-        time : Date
+        discussionId : String,
+        classId : String,
+        commentTitle : String,
+        time : String
     }],
     project : [{
-        projectId : Schema.Types.ObjectId, 
-        classId : Schema.Types.ObjectId, 
+        projectId : String, 
+        classId : String,
+        classTitle : String,
         projectTitle : String, 
         likes : Number, 
         projectThumbnail : String
