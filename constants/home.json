@@ -1,64 +1,66 @@
-{   // 이 형태로 성공...
-    "best_this_month" : {
+{   
+    
+    "b" : {
         "Best This Month" : 
         [{
             "_id" : "id1", 
-            "title" : "Create a Desktop Calendar/Wallpaper using a Pattern",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Sorin Constantin",
-            "duration" : "24"
+            "title" : "Going Freelance: Building and Branding Your Own Success",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+            "tutorName" : "Justin Gignac",
+            "duration" : "3060000"
         },
         {
             "_id" : "id2",
-            "title" : "T-Shirt Design Workshop 3: Photos & Type in Procreate App, Photoshop, and Illustrator",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Ray Dombroski",
-            "duration" : "45"
+            "title" : "Knife Skills: A Mini Class to Chop Like a Chef",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/b65b6a6d3605d74b1ac8e7fc5be7b45f/448-252",
+            "tutorName" : "Elana Karp",
+            "duration" : "720000"
         },
         {
             "_id" : "id3",
-            "title" : "How to Pursue a Career in UX",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Danny Florian",
-            "duration" : "13"
+            "title" : "Learn How to Mix Music with Young Guru",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/3756336274001/448-252",
+            "tutorName" : "Young Guru",
+            "duration" : "3180000"
         },
         {
             "_id" : "id4",
-            "title" : "Digital Marketing for Writers: Grow Your Audience and Author Platform",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Jenna Moreci",
-            "duration" : "32"
+            "title" : "Ink Drawing Techniques: Brush, Nib, and Pen Style",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/1f0c040a8ad062c5e29e2b67deef09f8/448-252",
+            "tutorName" : "Yuko Shimizu",
+            "duration" : "5520000"
         }]
     },
-    
-    "feature_on_skillshare" : [
-        {
+
+    "f" : {
+        "Feature On Skillshare" :
+        [{
             "_id" : "id1", 
-            "title" : "Create a Desktop Calendar/Wallpaper using a Pattern",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Sorin Constantin",
-            "duration" : "24"
+            "title" : "Hand Lettering Essentials for Beginners",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/3756411243001/448-252",
+            "tutorName" : "Mary Kate McDevitt",
+            "duration" : "7020000"
         },
         {
             "_id" : "id2",
-            "title" : "T-Shirt Design Workshop 3: Photos & Type in Procreate App, Photoshop, and Illustrator",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Ray Dombroski",
-            "duration" : "45"
+            "title" : "Getting Started with Email Marketing / Learn with MailChimp",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/85a04811b32284d8510633e771d30862/448-252",
+            "tutorName" : "Allyson Van Houten",
+            "duration" : "4260000"
         },
         {
             "_id" : "id3",
-            "title" : "How to Pursue a Career in UX",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Danny Florian",
-            "duration" : "13"
+            "title" : "Logo Design with Draplin: Secrets of Shape, Type and Color",
+            "imageUrl" : "https://static.skillshare.com/assets/images/design/draplin.png",
+            "tutorName" : "Aaron Draplin",
+            "duration" : "4020000"
         },
         {
             "_id" : "id4",
-            "title" : "Digital Marketing for Writers: Grow Your Audience and Author Platform",
-            "pictureUrl" : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-            "tutorName" : "Jenna Moreci",
-            "duration" : "32"
-        }
-    ]
+            "title" : "Street Photography: Capture the Life of Your City",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/e671af5a79f80dd3b163b9534f26103c/448-252",
+            "tutorName" : "trashhand",
+            "duration" : "5040000"
+        }]
+    }
 }

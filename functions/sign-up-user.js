@@ -1,7 +1,5 @@
 // mongo db
 var mongoose = require('mongoose');
-// http 통신
-var request = require('request');
 var user = require('../models/user');
 
 exports.signUp = function(email, password, name, callback) {

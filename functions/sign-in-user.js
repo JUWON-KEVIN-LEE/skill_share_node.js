@@ -7,6 +7,7 @@ var user = require('../models/user');
 exports.signIn = function(email, password, callback) {
     user.find({email : email, password : password}, {_id : true}, function(err, user) {
         if(user.length != 0) {
+            console.log("Sign In");
             callback({
                 result : 'success',
                 message : 'response : sign-in succeeded',

@@ -3,6 +3,7 @@ var registerDeviceFunction = require('../functions/register-devices');
 var signUpUserFunction = require('../functions/sign-up-user');
 var signInUserFunction = require('../functions/sign-in-user');
 var streamVideo = require('../functions/stream-video');
+var getUserFunction = require('../functions/get-user');
 var home = require('../constants/home');
 
 module.exports = function(app) {
@@ -38,6 +39,13 @@ module.exports = function(app) {
             });
         }
     });
+
+    // app.get('/user/:id', function(req, res) {
+    //     var userId = req.params.id;
+    //     getUserFunction.getUser(userId, function(result) {
+    //         res.json(result);
+    //     });
+    // });
 
     app.get('/user/sign-in', function(req, res) {
         var email = req.query.email;
@@ -95,8 +103,18 @@ module.exports = function(app) {
 
     app.get('/class/home', function(req, res) {
         var list = req.query.types;
-        
-        res.json(home.best_this_month);
+        console.log(list[0]);
+        var resList = [];
+
+        if(list.indexOf("f") >= 0) {
+            resList.push(home.f);
+        }
+
+        if(list.indexOf("b") >= 0) {
+            resList.push(home.b);
+        }
+            
+        res.json(resList);
     });
 
     app.get('/class/discussions/:id', function(req, res) {
