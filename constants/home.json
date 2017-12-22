@@ -35,32 +35,113 @@
     "f" : {
         "Feature On Skillshare" :
         [{
-            "_id" : "id1", 
+            "_id" : "id5", 
             "title" : "Hand Lettering Essentials for Beginners",
             "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/3756411243001/448-252",
             "tutorName" : "Mary Kate McDevitt",
             "duration" : "7020000"
         },
         {
-            "_id" : "id2",
+            "_id" : "id6",
             "title" : "Getting Started with Email Marketing / Learn with MailChimp",
             "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/85a04811b32284d8510633e771d30862/448-252",
             "tutorName" : "Allyson Van Houten",
             "duration" : "4260000"
         },
         {
-            "_id" : "id3",
+            "_id" : "id7",
             "title" : "Logo Design with Draplin: Secrets of Shape, Type and Color",
             "imageUrl" : "https://static.skillshare.com/assets/images/design/draplin.png",
             "tutorName" : "Aaron Draplin",
             "duration" : "4020000"
         },
         {
-            "_id" : "id4",
+            "_id" : "id8",
             "title" : "Street Photography: Capture the Life of Your City",
             "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/e671af5a79f80dd3b163b9534f26103c/448-252",
             "tutorName" : "trashhand",
             "duration" : "5040000"
+        }]
+    },
+
+    "t" : {
+        "Trending Now" : 
+        [{
+            "_id" : "id9",
+            "title" : "Whimsical Faces: Drawing Basics",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/ca3087499eeedb3a4f846f2867058214/448-252",
+            "tutorName" : "Jessica Sanders",
+            "duration" : "4140000"
+        },
+        {
+            "_id" : "id10",
+            "title" : "How to Create Parallax Photo Effect in Adobe Photoshop",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/ddff0f452ea7f0c8300e1dd17db4ef35/448-252",
+            "tutorName" : "Jestoni Esteban",
+            "duration" : "2100000"
+        },
+        {
+            "_id" : "id11",
+            "title" : "Recycled Crochet Rattie Rag Rugs for Beginners to Intermediate",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/fee30622d333e3c574ec46db9ed719ea/448-252",
+            "tutorName" : "Jeri Bellini",
+            "duration" : "3120000"
+        },
+        {
+            "_id" : "id11",
+            "title" : "Luminosity Masks and Portrait Retouching in Photoshop",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/333171bcc0654aed37f2326f7ea43a08/448-252",
+            "tutorName" : "Marcin Mikus",
+            "duration" : "2820000"
+        },
+        {
+            "_id" : "id12",
+            "title" : "Dark and Moody Chocolate Photography: DIY Natural Light Studio",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/cb942d2c2956d4ed29749dc0e9f282dd/448-252",
+            "tutorName" : "Tabitha Park",
+            "duration" : "3240000"
+        },
+        {
+            "_id" : "id13",
+            "title" : "Create Stylized Bokeh With Your DSLR",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/5d67c318cb74f78ac4ed77fc7abf6c9e/448-252",
+            "tutorName" : "Lucas Ridley",
+            "duration" : "1020000"
+        },
+        {
+            "_id" : "id14",
+            "title" : "Block Printing on Fabric: Decorate Your Walls!",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/a1e65b5c69dd967d40284f1435c46ea0/448-252",
+            "tutorName" : "Danielle Broder",
+            "duration" : "2160000"
+        },
+        {
+            "_id" : "id15",
+            "title" : "Adobe Lightroom: Library Workflow For Effective Organization",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/479572221bf3589433f826cc1adbc26c/448-252",
+            "tutorName" : "Jay (Trxlation)",
+            "duration" : "2220000"
+        },
+        {
+            "_id" : "id16",
+            "title" : "Ghost Photography: Craft a Surreal Disappearing Portrait",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/a1e65b5c69dd967d40284f1435c46ea0/448-252",
+            "tutorName" : "Tabitha Park",
+            "duration" : "2520000"
+        },
+        {
+            "_id" : "id17",
+            "title" : "Reverse Coloring - 3 New Fun Doodling Techniques",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/add4867186b9971ace92f0e776d00961/448-252",
+            "tutorName" : "Sarah Leigh",
+            "duration" : "2940000"
+        },
+        {
+            "_id" : "id18",
+            "title" : "Going Pro with Portrait Photography: How to Turn Your Photography Hobby into a Job",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/3644f46ae9e71286383e7e61eab42f44/448-252",
+            "tutorName" : "Sean Dalton",
+            "duration" : "4800000"
         }]
     }
 }

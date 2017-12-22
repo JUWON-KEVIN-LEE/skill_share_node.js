@@ -1,11 +1,9 @@
 // mongo db
 var mongoose = require('mongoose');
-// http 통신
-var request = require('request');
-var user = require('../models/user');
+var users = require('../models/users');
 
 exports.signIn = function(email, password, callback) {
-    user.find({email : email, password : password}, {_id : true}, function(err, user) {
+    users.find({email : email, password : password}, {_id : true}, function(err, user) {
         if(user.length != 0) {
             console.log("Sign In");
             callback({

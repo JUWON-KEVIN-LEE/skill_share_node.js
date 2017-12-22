@@ -1,6 +1,6 @@
 var gcm = require('node-gcm');
 var server_api_key = 'AIzaSyCqb0GH5XObY3AwpOxBF4JqHTadmbR5esY';
-var device = require('../models/device');
+var device = require('../models/devices');
 
 exports.sendMessage = function(message, userId, callback) {
     var message = new gcm.Message({data: {message: message}});

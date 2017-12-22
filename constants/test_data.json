@@ -1,0 +1,27 @@
+
+{
+    
+
+}
+
+// var classSchema = new Schema({
+    // type : String,
+    // title: String, //trim 필요
+    // tutorName: String, //trim 필요, 하위에 이름, 팔로워, 클래스
+    // duration : String,//num
+    // pictureUrl : String
+//     home : [homeSchema],
+//     title: String, //trim 필요
+//     tutor: [tutorSchema], //trim 필요, 하위에 이름, 팔로워, 클래스
+//     totalDuration : String,//num
+//     feedback : String, //trim
+//     subscriberCount : String,//num
+//     subscriber : [subScriberSchema],//trim userId 타고 name,recentTime, order, url, duration
+//     video : [videoSchema], // videoId 타고 duration, videotitle, video Thumbnail, videourl, order
+//     project : [projectSchema],//trim projetId타고 썸네일
+//     review : [reviewSchema],//trim, reivewid타고 콘텐츠, 좋아요(싫어요), 리뷰어사진, 리뷰어이름,registraionId
+//     category : [String],//배열
+//     relatedClass : [relatedClassSchema],//trim classId 타고, title, thumbnail, tutor
+//     discussion : [discussionSchema] //trim, discussion Id 타고 name, pic, content, time, like, discussion
+    
+// }, {versionKey : false});

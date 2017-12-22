@@ -1,0 +1,129 @@
+{
+    "_id" : "temp",
+    "title" : "Illustrating with Ink: Techniques for Brush and Pen",
+    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/cf76949ec67d8b9d1e7b96a1569027e6/448-252",
+    "duration" : "4800000",
+    "reviewPercent" : "100",
+    "subscriberCount" : "482",
+    "tutorId" : "temp",
+    "tutorName" : "Roman Muradov",
+    "tutorImageUrl" : "https://static.skillshare.com/uploads/users/226039/user-image-medium.png?2062807971",
+    "followersCount" : "8865",
+    "featuredClasses" : [
+        {
+            "_id" : "temp",
+            "title" : "Dark Botanical Photography: Capture Beautifully Moody Images of Plants",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/89a868cc22608f75c9eaf907a5e82246/448-252",
+            "tutorName" : "Linda & David",
+            "duration" : "1680000"
+        },
+        {
+            "_id" : "temp",
+            "title" : "Illustrating Flowers & Arranging Bouquets in Photoshop",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/787e1e10c96a032a2d997dbd2095ac9e/448-252",
+            "tutorName" : "Dylan Mierzwinski",
+            "duration" : "7320000"
+        },
+        {
+            "_id" : "temp",
+            "title" : "Building Great Teams: 8 Attributes for the Modern World | Learn with Atlassian",
+            "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/6945e9038091daf9496d4c16711c0055/448-252",
+            "tutorName" : "Dominic Price",
+            "duration" : "2280000"
+        }
+    ],
+    "classes" : [{
+        "Trending Classes" : 
+        [
+            {
+                "_id" : "temp", 
+                "title" : "Anyone Can Brush Letter: Modern Calligraphy Made Easy & Fun",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/b63915ea256d5aeb52052d36f4aff270/448-252",
+                "tutorName" : "Yasmina Creates",
+                "duration" : "4620000"
+            },
+            {
+                "_id" : "temp",
+                "title" : "The Practice of Visual Storytelling: Interviews with Artists",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/abfaa5a505902fe62909d7e462583bb4/448-252",
+                "tutorName" : "Debbie Millman",
+                "duration" : "2760000"
+            },
+            {
+                "_id" : "temp",
+                "title" : "Creating Habits That Stick - A Step-By-Step Guide",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/cc301094bbbd424653936bcc9d526af3/448-252",
+                "tutorName" : "Catrinel Girbovan",
+                "duration" : "1860000"
+            },
+            {
+                "_id" : "temp",
+                "title" : "T-Shirt Design Workshop 3: Photos & Type in Procreate App, Photoshop, and Illustrator",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/ff5e4c1b5d2a3daeb488e6093cdeeb2c/448-252",
+                "tutorName" : "Ray Dombroski",
+                "duration" : "4380000"
+            },
+            {
+                "_id" : "temp",
+                "title" : "Drawing plants & leaves: Grow your unique style through a visual library",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/86e60159a78535fba89eb891dbd6ef4c/448-252",
+                "tutorName" : "Marie-Noëlle Wurm",
+                "duration" : "1800000"
+            },
+            {
+                "_id" : "temp",
+                "title" : "Dark and Moody Chocolate Photography: DIY Natural Light Studio",
+                "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/cb942d2c2956d4ed29749dc0e9f282dd/448-252",
+                "tutorName" : "Tabitha Park",
+                "duration" : "3240000"
+            }
+        ]},
+        {
+            "Popular Classes" : [
+                {
+                    "_id" : "temp",
+                    "title" : "Customizing Type with Draplin: Creating Wordmarks That Work",
+                    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/a066303b3d0e2a5dc75686e364703eab/448-252",
+                    "tutorName" : "Aaron Draplin",
+                    "duration" : "5580000"
+                },
+                {
+                    "_id" : "temp",
+                    "title" : "Logo Design with Draplin: Secrets of Shape, Type and Color",
+                    "imageUrl" : "https://static.skillshare.com/assets/images/design/draplin.png",
+                    "tutorName" : "Aaron Draplin",
+                    "duration" : "4020000"
+                },
+                {
+                    "_id" : "temp",
+                    "title" : "Fundamentals of DSLR Photography",
+                    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/d2ab1337aea23b69b060f4d01726786e/448-252",
+                    "tutorName" : "Skillshare Photography Fundamentals",
+                    "duration" : "4740000"
+                },
+                {
+                    "_id" : "temp",
+                    "title" : "Mastering Illustrator: 10 Tips & Tricks to Speed Up Your Workflow",
+                    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/25018f1aada2a9c55ffb98ddf7c86aa0/448-252",
+                    "tutorName" : "DKNG Studios",
+                    "duration" : "2400000"
+                },
+                {
+                    "_id" : "temp",
+                    "title" : "Modern Watercolor Techniques: Beginner's Level",
+                    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/5f4f63e3a68707574e1700ce09afc677/448-252",
+                    "tutorName" : "Ana Victoria Calderón",
+                    "duration" : "8400000"
+                },
+                {
+                    "_id" : "temp",
+                    "title" : "Intro to Surface Pattern Design: Learn Adobe Illustrator | Create Patterns",
+                    "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/32ed9a3d525ab83cd0446c3fd43d0cd3/448-252",
+                    "tutorName" : "Bonnie Christine",
+                    "duration" : "13380000"
+                }
+                
+            ]
+        }
+    ]
+}

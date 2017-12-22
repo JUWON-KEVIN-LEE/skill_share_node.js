@@ -1,16 +1,16 @@
 // mongo db
 var mongoose = require('mongoose');
-var user = require('../models/user');
+var users = require('../models/users');
 
 exports.signUp = function(email, password, name, callback) {
 
-    var newUser = new user({
+    var newUser = new users({
         email : email,
         password : password,
         name : name,
     });
 
-    user.find({email : email}, function(err, user) {
+    users.find({email : email}, function(err, user) {
         if(user.length != 0) {
             callback({
                 result : 'failure',

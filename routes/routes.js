@@ -1,24 +1,162 @@
+// gcm
 var sendMessageFunction = require('../functions/send-message');
-var registerDeviceFunction = require('../functions/register-devices');
+var registerDeviceFunction = require('../functions/register-device');
+
+// user
 var signUpUserFunction = require('../functions/sign-up-user');
 var signInUserFunction = require('../functions/sign-in-user');
-var streamVideo = require('../functions/stream-video');
+
 var getUserFunction = require('../functions/get-user');
 var home = require('../constants/home');
 
+var streamVideo = require('../functions/stream-video');
+
+// mongoose temp for saving class
+var mongoose = require('mongoose');
+var classes = require('../models/classes');
+
+// class
+var getLessonsFunction = require('../functions/get-lessons')
+var getAboutFunction = require('../functions/get-about')
+var getDiscussionsFunction = require('../functions/get-discussions');
+
+var discussionFunction = require('../functions/discussions-function');
+
 module.exports = function(app) {
 
-    app.get('/', function(req, res) {
+    app.get('/ncls', function(req, res) {
+
+        var newClass = new classes({
+            title : "Going Freelance: Building and Branding Your Own Success",
+            imageUrl : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+            tutorName : "Justin Gignac",
+            totalDuration : "3060000",
+            lessons : {
+                title : "Going Freelance: Building and Branding Your Own Success",
+                totalDuration : "3060000",
+                reviewPercent : "99", 
+                subscriberCount : "267",
+                tutor : {
+                    tutorId : "Justin Gignac's ID",
+                    name : "Justin Gignac",
+                    followers : "2359",
+                    imageUrl : "https://graph.facebook.com/840760701/picture?type=normal"
+                },
+                videos : [{
+                    _id : "temp",
+                    title : "Let's Go!",
+                    duration : "116000",
+                    thumbnailUrl : "http://s3.amazonaws.com/skillshare/uploads/parentClasses/2f4f5efd1d503e7131249c94cf2ed7bc/681a4bd7",
+                    order : "0"
+                },
+                {
+                    _id : "temp",
+                    title : "Your Mission: Why You're Here",
+                    duration : "191000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/project/95045c8c57d1227a6cfb442bd5d3661d/219967c6",
+                    order : "1"
+                },
+                {
+                    _id : "temp",
+                    title : "The Power of Side Projects",
+                    duration : "510000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/project/d00cdd4401224eb969fc135174b89135/b6adbd89",
+                    order : "2"
+                },
+                {
+                    _id : "temp",
+                    title : "Things All Great Portfolios Do",
+                    duration : "339000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/project/91698/cover_800_28f0ed9b189297e1a13c6bc6cb444eca.jpg",
+                    order : "3"
+                }]
+            },
+            about : {
+                    projects : [
+                        {
+                            projectId : "project ID 1",
+                            imageUrl : "https://static.skillshare.com/uploads/project/d00cdd4401224eb969fc135174b89135/3bbd9b77"
+                        }
+                    ],
+                    reviews : [{
+                        likeOrNot : "like",
+                        content : "This is first reviews",
+                        reviewerId : "temp ID",
+                        reviewerName : "Great Healthy",
+                        imageUrl : "https://static.skillshare.com/uploads/project/61144/cover_800_e10d97be1e6045c496651c90efd59572.jpg"
+                    }],
+                    subscribers : [
+                    {
+                        subscriberId : "James ID",
+                        name : "James",
+                        imageUrl : "http://img2.sbs.co.kr/img/sbs_cms/CH/2016/06/06/CH92438362_w300_h300.jpg"
+                    },
+                    {
+                        subscriberId : "ChicChoc ID",
+                        name : "ChicChoc",
+                        imageUrl : "http://img2.sbs.co.kr/img/sbs_cms/CH/2016/06/06/CH82423479_w300_h300.jpg"
+                    },
+                    {
+                        subscriberId : "Butter Waffle ID",
+                        name : "Butter Waffle",
+                        imageUrl : "https://i.ytimg.com/vi/eqEcRwmV2vU/maxresdefault.jpg"
+                    },
+                    {
+                        subscriberId : "Computer ID",
+                        name : "Computer",
+                        imageUrl : "http://blogimg.ohmynews.com/attach/26495/1372921881.jpg"
+                    },
+                    {
+                        subscriberId : "Apple ID",
+                        name : "Apple",
+                        imageUrl : "http://cfile23.uf.tistory.com/image/9907AF3359C0C1153C71D2"
+                    }
+                    ],
+                    relatedClasses : [{
+                        classId : "class ID 1",
+                        thumbnailUrl : "https://cdn-images-1.medium.com/max/2000/1*7pjzaWKedACc3-olWUghLg.png",
+                        title : "iOS Design I: Getting Started with UX",
+                        tutorName : "Kara Hodecker"
+                    }, {
+                        classId : "class ID 2",
+                        thumbnailUrl : "https://learn.canva.com/wp-content/uploads/2015/10/40-People-Through-History-Who-Changed-Design-For-Good-04.png",
+                        title : "Getting Started with Sketch: Design a Beautiful App",
+                        tutorName : "Christian Krammer"
+                    }, {
+                        classId : "class ID 3",
+                        thumbnailUrl : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIeQXRYXiQyOD3f_Kbw3lvlvo92XMcMImEJrqcwKq1JliJQkfj",
+                        title : "Mobile App Prototyping",
+                        tutorName : "Noah Levin"
+                    }]
+            },
+            discussions : []
+        });
+
+        newClass.save(function(err, clas) {
+            if(err) {
+                console.log("save class error : " + err);
+            } else {
+                console.log("saved class success : " + clas);
+            }
+        });
+        
         res.sendFile('index.html');
+    });
+
+    app.post('/class/sendDiscussion', function(req, res) {
+        var classId = req.query.classId;
+        console.log("classID : " + classId);
+        var discussion = req.body;
+        
+        discussionFunction.sendDiscussion(discussion, classId, function(result) {
+            res.json(result);
+        });
     });
 
     // device register
     app.post('/device/register', function(req, res) {
-
         // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables
         var userId = req.body.userId;
-        var deviceName = req.body.deviceName;
-        var deviceId = req.body.deviceId;
         var registrationId = req.body.registrationId;
 
         // type 체크
@@ -33,24 +171,23 @@ module.exports = function(app) {
                 message : 'request : empty value'
             });
         } else {
-            registerDeviceFunction.register( userId, deviceName, deviceId, registrationId, function(result) {
-                console.log(result);
+            registerDeviceFunction.register( userId, registrationId, function(result) {
                 res.json(result);
             });
         }
     });
 
-    // app.get('/user/:id', function(req, res) {
-    //     var userId = req.params.id;
-    //     getUserFunction.getUser(userId, function(result) {
-    //         res.json(result);
-    //     });
-    // });
+    app.get('/user/:id', function(req, res) {
+        var userId = req.params.id;
+        getUserFunction.getUser(userId, function(result) {
+            res.json(result);
+        });
+    });
 
-    app.get('/user/sign-in', function(req, res) {
+    app.get('/users/sign-in', function(req, res) {
         var email = req.query.email;
         var password = req.query.password;
-        
+
         if( typeof email == 'undefined' || typeof password == 'undefined' ) {
             res.json({ // TODO <<< json 파일로 응답형식 만들어놓고 사용하기
                 result : 'failure',
@@ -101,75 +238,62 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/class/home', function(req, res) {
+    app.get('/home', function(req, res) {
         var list = req.query.types;
-        console.log(list[0]);
+        
         var resList = [];
 
-        if(list.indexOf("f") >= 0) {
-            resList.push(home.f);
-        }
+        resList.push(home.f);    
 
-        if(list.indexOf("b") >= 0) {
-            resList.push(home.b);
-        }
+        // if(list.indexOf("f") >= 0) {
+        // }
+
+        resList.push(home.b);
+        resList.push(home.t);
             
         res.json(resList);
     });
 
+    app.get('/discover', function(req, res) {
+        res.json(require('../constants/discover'));
+    });
+
+    app.get('/class/lessons/:id', function(req, res) {
+        var classId = req.params.id;
+
+        getLessonsFunction.getLessons(classId, function(result) {
+            res.json(result);
+        });
+    });
+
+    app.get('/class/about/:id', function(req, res) {
+        var classId = req.params.id;
+
+        getAboutFunction.getAbout(classId, function(result) {
+            res.json(result);
+        });
+    });
+
     app.get('/class/discussions/:id', function(req, res) {
-        var id = req.params.id;
-        console.log("id");
-        res.json([
-            {
-                _id : "id1",
-                name : "Jonathan",
-                pictureUrl : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
-                content : "앱을 만들 때 가장 중요하다고 생각하시는 부분이 어느 부분인가요? 테스트 해보고 싶은 부분이 있군요. 다섯줄을 넘겨야만 합니다. " +
-                        "어디까지 써야 다섯줄을 넘길 수 있을까요? 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세. " +
-                        "무궁화 삼천리 화려가앙산 대한사람 대한으로 길이 보전하세. 남산 위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세",
-                time : "1212125215123719283",
-                likeCount : "0",
-                userId : "userId1",
-                replies : []
-            },
-            {
-                _id : "id2",
-                name : "Coach",
-                pictureUrl : "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory&fname=http%3A%2F%2Fcfile21.uf.tistory.com%2Fimage%2F216FB64E5639CB96315B1B",
-                content : "도대체 앱 디자인은 어떻게 하는거죠?",
-                time : "1012125215123719283",
-                likeCount : "1",
-                userId : "userId2",
-                replies : []
-            },
-            {
-                _id : "id3",
-                name : "Jane",
-                pictureUrl : "https://pbs.twimg.com/profile_images/908706663519051776/84pGO2Zl.jpg",
-                content : "Hello guys. Pleased to meet you.",
-                time : "912125215123719283",
-                likeCount : "2",
-                userId : "userId3",
-                replies : [
-                    {
-                        name : "kevin Lee",
-                        pictureUrl : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-                        content : "Actually this is test comment.",
-                        time : "12125215123719283"
-                    },
-                    {
-                        name : "kevin Lee",
-                        pictureUrl : "http://image.chosun.com/sitedata/image/201508/06/2015080603367_0.jpg",
-                        content : "hello!!",
-                        time : "10125215123719283"
-                    }
-                ]
-            }
-        ]); // test 결과 잘 넘어감... 위 순서대로 들어감 0 , 1 , 2...
+        var classId = req.params.id;
+
+        getDiscussionsFunction.getDiscussions(classId, function(result) {
+            res.json(result);
+        });
     });
 
     app.get('class/video/:id', function(req, res) {
         res.send();
+    });
+
+    app.post('/discussions/addReply', function(req, res) {
+        var discussionId = req.query.discussionId;
+        var reply = req.body;
+
+        console.log("dicussionId : " + discussionId);
+
+        discussionFunction.addReply(reply, discussionId, function(result) {
+            res.json(result);
+        });
     });
 }
