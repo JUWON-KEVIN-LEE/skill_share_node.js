@@ -32,9 +32,8 @@
             "duration" : "2280000"
         }
     ],
-    "classes" : [{
-        "Trending Classes" : 
-        [
+    "classes" : {
+            "t" : [
             {
                 "_id" : "temp", 
                 "title" : "Anyone Can Brush Letter: Modern Calligraphy Made Easy & Fun",
@@ -76,10 +75,8 @@
                 "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/cb942d2c2956d4ed29749dc0e9f282dd/448-252",
                 "tutorName" : "Tabitha Park",
                 "duration" : "3240000"
-            }
-        ]},
-        {
-            "Popular Classes" : [
+            }],
+            "p" : [
                 {
                     "_id" : "temp",
                     "title" : "Customizing Type with Draplin: Creating Wordmarks That Work",
@@ -121,9 +118,6 @@
                     "imageUrl" : "https://static.skillshare.com/uploads/video/thumbnails/32ed9a3d525ab83cd0446c3fd43d0cd3/448-252",
                     "tutorName" : "Bonnie Christine",
                     "duration" : "13380000"
-                }
-                
-            ]
-        }
-    ]
+                }]
+    }
 }

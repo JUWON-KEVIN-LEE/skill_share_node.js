@@ -32,7 +32,9 @@ var userSchema = mongoose.Schema({
     }],
     group : [{
         groupId : String,
-        groupName : String
+        groupName : String,
+        groupThumbnail : String,
+        memberCount : String
     }],
     discussion : [{
         discussionId : String,

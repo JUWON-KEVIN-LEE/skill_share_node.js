@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 // Schema type : String, Number, Date, Buffer, Boolean, Mixed, Objectid, Array
 var deviceSchema = mongoose.Schema({
     userId : String,
-    resId : String
+    registrationId : String
 }, {'versionKey' : false});
 
 // url / db 이름

@@ -1,26 +1,20 @@
 // gcm
-var sendMessageFunction = require('../functions/send-message');
-var registerDeviceFunction = require('../functions/register-device');
-
+var gcmFunction = require('../functions/gcm-function');
 // user
-var signUpUserFunction = require('../functions/sign-up-user');
-var signInUserFunction = require('../functions/sign-in-user');
-
-var getUserFunction = require('../functions/get-user');
+var userFunction = require('../functions/user-function');
+// main
 var home = require('../constants/home');
+// class
+var classFunction = require('../functions/class-function');
+// discussion
+var discussionFunction = require('../functions/discussions-function');
 
+// TODO
 var streamVideo = require('../functions/stream-video');
 
 // mongoose temp for saving class
 var mongoose = require('mongoose');
 var classes = require('../models/classes');
-
-// class
-var getLessonsFunction = require('../functions/get-lessons')
-var getAboutFunction = require('../functions/get-about')
-var getDiscussionsFunction = require('../functions/get-discussions');
-
-var discussionFunction = require('../functions/discussions-function');
 
 module.exports = function(app) {
 
@@ -134,55 +128,42 @@ module.exports = function(app) {
 
         newClass.save(function(err, clas) {
             if(err) {
-                console.log("save class error : " + err);
+                res.send("save class error : " + err);
             } else {
-                console.log("saved class success : " + clas);
+                res.send("saved class success : " + clas);
             }
         });
-        
-        res.sendFile('index.html');
     });
 
-    app.post('/class/sendDiscussion', function(req, res) {
-        var classId = req.query.classId;
-        console.log("classID : " + classId);
-        var discussion = req.body;
-        
-        discussionFunction.sendDiscussion(discussion, classId, function(result) {
-            res.json(result);
-        });
-    });
-
-    // device register
-    app.post('/device/register', function(req, res) {
-        // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables
-        var userId = req.body.userId;
-        var registrationId = req.body.registrationId;
-
-        // type 체크
-        if( typeof userId == 'undefined' || typeof deviceName == 'undefined' || typeof deviceId == 'undefined' || typeof registrationId == 'undefined' ) {
-            res.json({ // TODO <<< json 파일로 응답형식 만들어놓고 사용하기
-                result : 'failure',
-                message : 'request : invalid value type'
-            });
-        } else if( !userId.trim() || !deviceName.trim() || !deviceId.trim() || !registrationId.trim() ) { // 앞뒤로 공백 제거하고 null 이면
-            res.json({
-                result : 'failure',
-                message : 'request : empty value'
-            });
-        } else {
-            registerDeviceFunction.register( userId, registrationId, function(result) {
-                res.json(result);
-            });
-        }
-    });
-
+    // user
     app.get('/user/:id', function(req, res) {
         var userId = req.params.id;
-        getUserFunction.getUser(userId, function(result) {
+        userFunction.getUser(userId, function(result) {
             res.json(result);
         });
     });
+
+    app.post('/user/sign-up', function(req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
+        var name = req.body.name;
+        
+         if( typeof email == 'undefined' || typeof password == 'undefined' || typeof name == 'undefined' ) {
+             res.json({
+                 result : 'failure',
+                 message : 'request : invalid value type'
+             });
+         } else if( !email.trim() || !password.trim() || !name.trim() ) { // 앞뒤로 공백 제거하고 null 이면
+             res.json({
+                 result : 'failure',
+                 message : 'request : empty value'
+             });
+         } else {
+             userFunction.signUp( email, password, name, function(result) {
+                 res.json(result);
+             });
+         }
+     });
 
     app.get('/users/sign-in', function(req, res) {
         var email = req.query.email;
@@ -199,69 +180,42 @@ module.exports = function(app) {
                 message : 'request : empty value'
             });
         } else {
-            signInUserFunction.signIn( email, password, function(result) {
+            userFunction.signIn( email, password, function(result) {
                 res.json(result);
             });
         }
     });
 
-    app.post('/user/sign-up', function(req, res) {
-       var email = req.body.email;
-       var password = req.body.password;
-       var name = req.body.name;
-       
-        if( typeof email == 'undefined' || typeof password == 'undefined' || typeof name == 'undefined' ) {
-            res.json({
-                result : 'failure',
-                message : 'request : invalid value type'
-            });
-        } else if( !email.trim() || !password.trim() || !name.trim() ) { // 앞뒤로 공백 제거하고 null 이면
-            res.json({
-                result : 'failure',
-                message : 'request : empty value'
-            });
-        } else {
-            signUpUserFunction.signUp( email, password, name, function(result) {
-                res.json(result);
-            });
-        }
-    });
-
-    // gcm
-    app.post('/send', function(req, res) {
-        var userName = req.body.userName;
-        var userId = req.body.userId;
-        var message = userName + " 님이 회원님의 글을 좋아합니다."
-
-        sendMessageFunction.sendMessage(message, userId, function(result) {
-            res.json(result);
-        });
-    });
-
+    // main
     app.get('/home', function(req, res) {
         var list = req.query.types;
         
         var resList = [];
 
-        resList.push(home.f);    
+        resList.push(home.f);
 
-        // if(list.indexOf("f") >= 0) {
+        // if(list.indexOf("f") >= 0) { <<< follow skills check
         // }
 
         resList.push(home.b);
         resList.push(home.t);
-            
+
         res.json(resList);
+    });
+
+    app.get('/group', function(req, res) {
+        res.json(require('../constants/group'));
     });
 
     app.get('/discover', function(req, res) {
         res.json(require('../constants/discover'));
     });
 
+    // class
     app.get('/class/lessons/:id', function(req, res) {
         var classId = req.params.id;
 
-        getLessonsFunction.getLessons(classId, function(result) {
+        classFunction.getLessons(classId, function(result) {
             res.json(result);
         });
     });
@@ -269,7 +223,7 @@ module.exports = function(app) {
     app.get('/class/about/:id', function(req, res) {
         var classId = req.params.id;
 
-        getAboutFunction.getAbout(classId, function(result) {
+        classFunction.getAbout(classId, function(result) {
             res.json(result);
         });
     });
@@ -277,13 +231,19 @@ module.exports = function(app) {
     app.get('/class/discussions/:id', function(req, res) {
         var classId = req.params.id;
 
-        getDiscussionsFunction.getDiscussions(classId, function(result) {
+        classFunction.getDiscussions(classId, function(result) {
             res.json(result);
         });
     });
 
-    app.get('class/video/:id', function(req, res) {
-        res.send();
+    // discussion
+    app.post('/class/sendDiscussion', function(req, res) {
+        var classId = req.query.classId;
+        var discussion = req.body;
+        
+        discussionFunction.sendDiscussion(discussion, classId, function(result) {
+            res.json(result);
+        });
     });
 
     app.post('/discussions/addReply', function(req, res) {
@@ -293,6 +253,44 @@ module.exports = function(app) {
         console.log("dicussionId : " + discussionId);
 
         discussionFunction.addReply(reply, discussionId, function(result) {
+            res.json(result);
+        });
+    });
+
+    app.get('class/video/:id', function(req, res) {
+        res.send();
+    });
+
+    // Google Cloud Messaging
+    app.post('/device/register', function(req, res) { // device register
+        // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables
+        var userId = req.body.userId;
+        var registrationId = req.body.registrationId;
+
+        // type 체크
+        if( typeof userId == 'undefined' || typeof deviceName == 'undefined' || typeof deviceId == 'undefined' || typeof registrationId == 'undefined' ) {
+            res.json({ // TODO <<< json 파일로 응답형식 만들어놓고 사용하기
+                result : 'failure',
+                message : 'request : invalid value type'
+            });
+        } else if( !userId.trim() || !deviceName.trim() || !deviceId.trim() || !registrationId.trim() ) { // 앞뒤로 공백 제거하고 null 이면
+            res.json({
+                result : 'failure',
+                message : 'request : empty value'
+            });
+        } else {
+            gcmFunction.register( userId, registrationId, function(result) {
+                res.json(result);
+            });
+        }
+    });
+
+    app.post('/send', function(req, res) { // send Message
+        var userName = req.body.userName;
+        var userId = req.body.userId;
+        var message = userName + " 님이 회원님의 글을 좋아합니다."
+
+        gcmFunction.sendMessage(message, userId, function(result) {
             res.json(result);
         });
     });

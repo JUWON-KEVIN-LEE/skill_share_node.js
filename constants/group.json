@@ -1,0 +1,54 @@
+{   
+        "Featured Groups" :
+            [{
+                    "_id" : "id1", 
+                    "groupName" : "Illustrators",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "5.4k"
+            },
+            {
+                    "_id" : "id2", 
+                    "groupName" : "Creative",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "4.2k"
+            },
+            {
+                    "_id" : "id3", 
+                    "groupName" : "Productivity Tips",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "3.6k"
+            },
+            {
+                    "_id" : "id4", 
+                    "groupName" : "Graphic Designers",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "3.4k"
+            }],
+        
+        "Recently Active Groups" : 
+            [{
+                    "_id" : "id5", 
+                    "groupName" : "Caligraphy & Lettering",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "2.4k"
+            },
+            {
+                    "_id" : "id6", 
+                    "groupName" : "Social Media Strategy",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "3k"
+            },
+            {
+                    "_id" : "id7", 
+                    "groupName" : "Filmmaking",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "559"
+            },
+            {
+                    "_id" : "id8", 
+                    "groupName" : "Watercolor",
+                    "groupThumbnail" : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
+                    "memberCount" : "1.9k"
+            }]
+    
+}
