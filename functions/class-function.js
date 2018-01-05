@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var classes = require('../models/classes');
 
 exports.getLessons = function(classId, callback) {
-    classes.findById("5a3ca8f09efbc0255c7d1593", function(err, clas) {
+    classes.findById("5a4f1afc83004e24a841ce16", function(err, clas) {
         if(!err) {
             console.log("lessons response");
             callback(clas.lessons);
@@ -14,7 +14,7 @@ exports.getLessons = function(classId, callback) {
 };
 
 exports.getAbout = function(classId, callback) {
-    classes.findById("5a3ca8f09efbc0255c7d1593", function(err, clas) {
+    classes.findById("5a4f1afc83004e24a841ce16", function(err, clas) {
         if(!err) {
             callback(clas.about);
         } else {
@@ -24,7 +24,7 @@ exports.getAbout = function(classId, callback) {
 }
 
 exports.getDiscussions = function(classId, callback) {
-    classes.findById("5a3ca8f09efbc0255c7d1593", function(err, clas) {
+    classes.findById("5a4f1afc83004e24a841ce16", function(err, clas) {
         if(!err) {
             classes.populate(clas, { path : 'discussions', model : 'discussion'}, function(err, clas) {
                 callback(clas.discussions);

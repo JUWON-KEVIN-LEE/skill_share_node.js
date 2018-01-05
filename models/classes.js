@@ -26,6 +26,7 @@ var classSchema = new Schema({
             imageUrl : String
         },
         videos : [{
+            url : String,
             title : String,
             duration : String,
             thumbnailUrl : String,

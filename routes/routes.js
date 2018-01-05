@@ -37,32 +37,32 @@ module.exports = function(app) {
                     imageUrl : "https://graph.facebook.com/840760701/picture?type=normal"
                 },
                 videos : [{
-                    _id : "temp",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686260449001_4686214280001.mp4?pubId=3695997568001&videoId=4686214280001",
                     title : "Let's Go!",
                     duration : "116000",
                     thumbnailUrl : "http://s3.amazonaws.com/skillshare/uploads/parentClasses/2f4f5efd1d503e7131249c94cf2ed7bc/681a4bd7",
-                    order : "0"
-                },
-                {
-                    _id : "temp",
-                    title : "Your Mission: Why You're Here",
-                    duration : "191000",
-                    thumbnailUrl : "https://static.skillshare.com/uploads/project/95045c8c57d1227a6cfb442bd5d3661d/219967c6",
                     order : "1"
                 },
                 {
-                    _id : "temp",
-                    title : "The Power of Side Projects",
-                    duration : "510000",
-                    thumbnailUrl : "https://static.skillshare.com/uploads/project/d00cdd4401224eb969fc135174b89135/b6adbd89",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686261038001_4686207842001.mp4?pubId=3695997568001&videoId=4686207842001",
+                    title : "Your Mission: Why You're Here",
+                    duration : "191000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/project/95045c8c57d1227a6cfb442bd5d3661d/219967c6",
                     order : "2"
                 },
                 {
-                    _id : "temp",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686265348001_4686213997001.mp4?pubId=3695997568001&videoId=4686213997001",
+                    title : "The Power of Side Projects",
+                    duration : "510000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/project/d00cdd4401224eb969fc135174b89135/b6adbd89",
+                    order : "3"
+                },
+                {
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686264469001_4686207843001.mp4?pubId=3695997568001&videoId=4686207843001",
                     title : "Things All Great Portfolios Do",
                     duration : "339000",
                     thumbnailUrl : "https://static.skillshare.com/uploads/project/91698/cover_800_28f0ed9b189297e1a13c6bc6cb444eca.jpg",
-                    order : "3"
+                    order : "4"
                 }]
             },
             about : {
@@ -206,6 +206,13 @@ module.exports = function(app) {
     app.get('/group', function(req, res) {
         res.json(require('../constants/group'));
     });
+
+    app.get('/group/:id/:position', function(req, res) {
+        var id = req.params.id;
+        var position = req.params.position;
+        
+        require('../constants/group_chat');
+    })
 
     app.get('/discover', function(req, res) {
         res.json(require('../constants/discover'));

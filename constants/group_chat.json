@@ -1,0 +1,50 @@
+{
+    "chatId0" : {
+        "userId" : "temp",
+        "userName" : "juwon lee",
+        "userHashTag" : "@abcd",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "안녕하세요",
+        "time" : ""
+    },
+    "chatId1" : {
+        "userId" : "temp",
+        "userName" : "melon",
+        "userHashTag" : "@ta",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "반갑습니다",
+        "time" : ""
+    },
+    "chatId2" : {
+        "userId" : "temp",
+        "userName" : "kakao",
+        "userHashTag" : "@ga",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "카카오톡",
+        "time" : ""
+    },
+    "chatId3" : {
+        "userId" : "temp",
+        "userName" : "jonathan",
+        "userHashTag" : "@anfw",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "조나단 조교님",
+        "time" : ""
+    },
+    "chatId4" : {
+        "userId" : "temp",
+        "userName" : "json kim",
+        "userHashTag" : "@test",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "json 파일은 parcing 을 잘해야된다.",
+        "time" : ""
+    },
+    "chatId5" : {
+        "userId" : "temp",
+        "userName" : "naver",
+        "userHashTag" : "@naver",
+        "imageUrl" : "http://pds.joins.com/news/component/htmlphoto_mmdata/201706/05/65f78b68-89f2-4add-8ff8-8c2b1b25be53.jpg",
+        "comment" : "네이버",
+        "time" : ""
+    }
+}
