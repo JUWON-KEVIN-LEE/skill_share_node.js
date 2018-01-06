@@ -14,12 +14,12 @@ var userSchema = mongoose.Schema({
     following : [{ 
         userId : String,
         name : String, 
-        photoUrl : String 
+        imageUrl : String 
     }],
     followers : [{
         userId : String, 
         name : String, 
-        photoUrl : String 
+        imageUrl : String 
     }],
     subsribedClass : [{ 
         classId : String,

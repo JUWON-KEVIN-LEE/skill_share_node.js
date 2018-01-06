@@ -34,3 +34,10 @@ exports.getDiscussions = function(classId, callback) {
         }
     })
 }
+
+exports.search = function(content, callback) {
+    classes.find({title: { $regex: content}}, {_id: 1, imageUrl : 1, title : 1, tutorName:1, totalDuration : 1, reviewPercent : 1, subscriberCount : 1}, function(err, searchedClasses) {
+        console.log(searchedClasses);
+        callback(searchedClasses);
+    })
+}

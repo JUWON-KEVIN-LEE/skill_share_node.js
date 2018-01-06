@@ -14,6 +14,8 @@ var classSchema = new Schema({
     imageUrl : String,
     tutorName : String,
     totalDuration : String,
+    reviewPercent : String,
+    subscriberCount : String,
     lessons : {
         title : String,
         totalDuration : String,

@@ -57,3 +57,49 @@ exports.getUser = function(userId, callback) {
         callback(user);
     });
 };
+
+exports.followOrUnfollow = function(userId, tutor, callback) {
+    users.findById(userId, function(err, user) {
+        var index = -1;
+
+        for(var i=0; i<user.following.length; i++) {
+            if(user.following[i].userId == tutor.tutorId) {
+                index = i;
+                break;
+            }
+        }
+        
+        if(index >= 0) {
+            console.log("following exists");
+            var following = user.following[index];
+            user.following.splice(index,1);
+            console.log(following);
+
+            user.save(function(err) {
+                if(!err) {
+                    callback(following)
+                } else {
+                    callback(null)
+                }
+            })
+        } else {
+            console.log("following not existed");
+
+            user.following.push({
+                userId : tutor.tutorId,
+                name : tutor.name,
+                imageUrl : tutor.imageUrl
+            });
+
+            user.save(function(err, user) {
+                if(!err) {
+                    console.log("succeed");
+                    callback(user.following[user.following.length-1])
+                } else {
+                    console.log("failed");
+                    callback(null)
+                }
+            });
+        }
+    });
+}

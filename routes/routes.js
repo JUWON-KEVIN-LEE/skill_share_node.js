@@ -21,48 +21,57 @@ module.exports = function(app) {
     app.get('/ncls', function(req, res) {
 
         var newClass = new classes({
-            title : "Going Freelance: Building and Branding Your Own Success",
-            imageUrl : "https://static.skillshare.com/uploads/video/thumbnails/00da9ecbdcff6b3720dcc633f4ab0e22/448-252",
-            tutorName : "Justin Gignac",
-            totalDuration : "3060000",
+            title : "SEO Today: Strategies to Earn Trust, Rank High, and Stand Out",
+            imageUrl : "https://static.skillshare.com/uploads/video/thumbnails/562151dcbe554d7341678c16c8d07f6c/448-252",
+            tutorName : "Rand Fishkin",
+            totalDuration : "4140000",
+            reviewPercent : "99",
+            subscriberCount : "1838",
             lessons : {
-                title : "Going Freelance: Building and Branding Your Own Success",
-                totalDuration : "3060000",
+                title : "SEO Today: Strategies to Earn Trust, Rank High, and Stand Out",
+                totalDuration : "4140000",
                 reviewPercent : "99", 
-                subscriberCount : "267",
+                subscriberCount : "1838",
                 tutor : {
-                    tutorId : "Justin Gignac's ID",
-                    name : "Justin Gignac",
-                    followers : "2359",
-                    imageUrl : "https://graph.facebook.com/840760701/picture?type=normal"
+                    tutorId : "Rand Fishkin's ID",
+                    name : "Rand Fishkin",
+                    followers : "11628",
+                    imageUrl : "https://static.skillshare.com/uploads/users/4880302/user-image-medium.jpg?854842768"
                 },
                 videos : [{
-                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686260449001_4686214280001.mp4?pubId=3695997568001&videoId=4686214280001",
-                    title : "Let's Go!",
-                    duration : "116000",
-                    thumbnailUrl : "http://s3.amazonaws.com/skillshare/uploads/parentClasses/2f4f5efd1d503e7131249c94cf2ed7bc/681a4bd7",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_5463401859001_5463396146001.mp4?pubId=3695997568001&videoId=5463396146001",
+                    title : "Introduction",
+                    duration : "137000",
+                    thumbnailUrl : "https://static.skillshare.com/uploads/video/thumbnails/562151dcbe554d7341678c16c8d07f6c/651-366",
                     order : "1"
                 },
                 {
-                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686261038001_4686207842001.mp4?pubId=3695997568001&videoId=4686207842001",
-                    title : "Your Mission: Why You're Here",
-                    duration : "191000",
-                    thumbnailUrl : "https://static.skillshare.com/uploads/project/95045c8c57d1227a6cfb442bd5d3661d/219967c6",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_5480247711001_5480233767001.mp4?pubId=3695997568001&videoId=5480233767001",
+                    title : "I. Link Earning, Whiteboard",
+                    duration : "916000",
+                    thumbnailUrl : "",
                     order : "2"
                 },
                 {
-                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686265348001_4686213997001.mp4?pubId=3695997568001&videoId=4686213997001",
-                    title : "The Power of Side Projects",
-                    duration : "510000",
-                    thumbnailUrl : "https://static.skillshare.com/uploads/project/d00cdd4401224eb969fc135174b89135/b6adbd89",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_5463277991001_5463244831001.mp4?pubId=3695997568001&videoId=5463244831001",
+                    title : "I. Link Earning, Screencast",
+                    duration : "356000",
+                    thumbnailUrl : "",
                     order : "3"
                 },
                 {
-                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_4686264469001_4686207843001.mp4?pubId=3695997568001&videoId=4686207843001",
-                    title : "Things All Great Portfolios Do",
-                    duration : "339000",
-                    thumbnailUrl : "https://static.skillshare.com/uploads/project/91698/cover_800_28f0ed9b189297e1a13c6bc6cb444eca.jpg",
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_5485037286001_5485012419001.mp4?pubId=3695997568001&videoId=5485012419001",
+                    title : "II. On-Page Optimization, Whiteboard",
+                    duration : "820000",
+                    thumbnailUrl : "",
                     order : "4"
+                },
+                {
+                    url : "https://f1.media.brightcove.com/12/3695997568001/3695997568001_5463277798001_5463280286001.mp4?pubId=3695997568001&videoId=5463280286001",
+                    title : "II. On-Page Optimization, Screencast",
+                    duration : "217000",
+                    thumbnailUrl : "",
+                    order : "5"
                 }]
             },
             about : {
@@ -74,9 +83,9 @@ module.exports = function(app) {
                     ],
                     reviews : [{
                         likeOrNot : "like",
-                        content : "This is first reviews",
+                        content : "good good very good!!",
                         reviewerId : "temp ID",
-                        reviewerName : "Great Healthy",
+                        reviewerName : "Epik High",
                         imageUrl : "https://static.skillshare.com/uploads/project/61144/cover_800_e10d97be1e6045c496651c90efd59572.jpg"
                     }],
                     subscribers : [
@@ -186,6 +195,12 @@ module.exports = function(app) {
         }
     });
 
+    app.put('/user/follow/:userId', function(req, res) {
+        userFunction.followOrUnfollow(req.params.userId, req.body, function(result) {
+            res.json(result);
+        });
+    });
+
     // main
     app.get('/home', function(req, res) {
         var list = req.query.types;
@@ -243,6 +258,12 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/class/search/:content', function(req, res) {
+        classFunction.search(req.params.content, function(result) {
+            res.json(result);
+        });
+    });
+
     // discussion
     app.post('/class/sendDiscussion', function(req, res) {
         var classId = req.query.classId;
@@ -262,10 +283,6 @@ module.exports = function(app) {
         discussionFunction.addReply(reply, discussionId, function(result) {
             res.json(result);
         });
-    });
-
-    app.get('class/video/:id', function(req, res) {
-        res.send();
     });
 
     // Google Cloud Messaging

@@ -21,7 +21,7 @@ exports.sendDiscussion = function(sendedDiscussion, classId, callback) {
     newDiscussion.save( function(err, discussion) {
         discussionId = discussion._id;
 
-        classes.findById("5a3ca8f09efbc0255c7d1593", function(err, clas) {
+        classes.findById("5a4f1afc83004e24a841ce16", function(err, clas) {
             clas.discussions.push(discussionId);
 
             clas.save(function(err) {
