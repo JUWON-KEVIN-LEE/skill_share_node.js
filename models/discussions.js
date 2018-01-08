@@ -8,6 +8,7 @@ var discussionSchema = new mongoose.Schema({
     name : String,
     imageUrl : String,
     resId : String,
+    likeUsersIds : [String],
     replies : [{
         name : String,
         imageUrl : String,

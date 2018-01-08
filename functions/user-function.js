@@ -70,10 +70,8 @@ exports.followOrUnfollow = function(userId, tutor, callback) {
         }
         
         if(index >= 0) {
-            console.log("following exists");
             var following = user.following[index];
             user.following.splice(index,1);
-            console.log(following);
 
             user.save(function(err) {
                 if(!err) {
@@ -83,8 +81,6 @@ exports.followOrUnfollow = function(userId, tutor, callback) {
                 }
             })
         } else {
-            console.log("following not existed");
-
             user.following.push({
                 userId : tutor.tutorId,
                 name : tutor.name,

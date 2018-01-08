@@ -12,6 +12,7 @@ exports.sendDiscussion = function(sendedDiscussion, classId, callback) {
         name : sendedDiscussion.name,
         imageUrl : sendedDiscussion.imageUrl,
         resId : sendedDiscussion.resId,
+        likeUsersIds : [],
         replies : []
     });
 
@@ -38,7 +39,7 @@ exports.sendDiscussion = function(sendedDiscussion, classId, callback) {
     });
 }
 
-exports.addReply= function(reply, discussionId, callback) {
+exports.addReply = function(reply, discussionId, callback) {
 
     var newReply = {
         name : reply.name,
@@ -57,6 +58,37 @@ exports.addReply= function(reply, discussionId, callback) {
     
                 }
             });
+        }
+    });
+}
+
+exports.like = function(discussionId, userId, callback) {
+    discussions.findById(discussionId, function(err, discussion) {
+        if(!err) {
+            discussion.likeUsersIds.push(userId);
+            discussion.save(function(err, discussion) {
+                if(!err) {
+                    callback({
+                        likeCount : ""+discussion.likeUsersIds.length
+                    });
+                }
+            })
+        }
+    });
+}
+
+exports.unlike = function(discussionId, userId, callback) {
+    discussions.findById(discussionId, function(err, discussion) {
+        if(!err) {
+            var index = discussion.likeUsersIds.indexOf(userId);
+            discussion.likeUsersIds.splice(index, 1);
+            discussion.save(function(err, discussion) {
+                if(!err) {
+                    callback({
+                        likeCount : ""+discussion.likeUsersIds.length
+                    });
+                }
+            })
         }
     });
 }

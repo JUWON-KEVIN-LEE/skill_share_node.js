@@ -285,6 +285,40 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/discussions/like', function(req, res) {
+        var userName = req.body.userName;
+        var resId = req.body.resId;
+        var message = userName + " 님이 회원님의 글을 좋아합니다."
+
+        gcmFunction.sendLikeMessage(message, resId, function(result) {
+            console.log(result);
+        });
+
+        var discussionId = req.body.discussionId;
+        var userId = req.body.userId;
+        
+        discussionFunction.like(discussionId, userId, function(result) {
+            res.json(result);
+        });
+    })
+
+    app.post('/discussions/unlike', function(req, res) {
+        var discussionId = req.body.discussionId;
+        var userId = req.body.userId;
+        
+        discussionFunction.unlike(discussionId, userId, function(result) {
+            res.json(result);
+        });
+
+        var userName = req.body.userName;
+        var resId = req.body.resId;
+        var message = userName + " 님이 좋아요를 취소하셨습니다."
+
+        gcmFunction.sendLikeMessage(message, resId, function(result) {
+            console.log(result);
+        });
+    })
+
     // Google Cloud Messaging
     app.post('/device/register', function(req, res) { // device register
         // retrofit interface 에 정의 : post >>> /devices >>> @Body RequestBody variables

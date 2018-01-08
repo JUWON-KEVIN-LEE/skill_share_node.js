@@ -37,6 +37,27 @@ exports.sendMessage = function(message, userId, callback) {
     })
 }
 
+exports.sendLikeMessage = function(message, resId, callback) {
+    var message = new gcm.Message({data: {message: message}});
+    
+    var resIds = [];
+    resIds.push(resId);
+
+    new gcm.Sender(server_api_key).send( message, resIds, function(err, response) {
+        if(err) {
+            callback({
+                result : 'failure',
+                message : 'response : message send failed by error & ' + err
+            });
+        } else {
+            callback({
+                result : 'success',
+                message : 'response : message send succeed'
+            });
+        }
+    });
+}
+
 exports.register = function(userId, registrationId, callback) {
         devices.find({userId : userId, registrationId : registrationId}, function(err, device) {
             if(device.length == 0) {
