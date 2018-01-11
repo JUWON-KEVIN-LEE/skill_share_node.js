@@ -99,3 +99,29 @@ exports.followOrUnfollow = function(userId, tutor, callback) {
         }
     });
 }
+
+exports.joinGroup = function(group, userId, callback) {
+    users.findById(userId, function(err, user) {
+        user.groups.push({
+            groupId : group._id,
+            groupName : group.groupName,
+            groupThumbnail : group.groupThumbnail,
+            memberCount : group.memberCount
+        });
+
+        user.save(function(err) {
+            if(!err) {
+                console.log("success");
+                callback({
+                    result : 'success',
+                    message : 'response : join group succeeded',
+                })
+            } else {
+                callback({
+                    result : 'failure',
+                    message : 'response : join group failed',
+                })
+            }
+        })
+    })   
+}

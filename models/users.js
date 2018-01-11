@@ -1,7 +1,11 @@
 var mongoose = require('mongoose');
 
-// Schema <<< document 구조를 보여준다
-var Schema = mongoose.Schema;
+var groupSchema = mongoose.Schema({
+    groupId : String,
+    groupName : String,
+    groupThumbnail : String,
+    memberCount : String
+}, {_id : false});
 
 // Schema type : String, Number, Date, Buffer, Boolean, Mixed, Objectid, Array
 var userSchema = mongoose.Schema({
@@ -12,29 +16,35 @@ var userSchema = mongoose.Schema({
     nickname : String,
     pictureUrl : String,
     following : [{ 
-        userId : String,
-        name : String, 
-        imageUrl : String 
+        _id : false,
+        field : {
+            userId : String, 
+            name : String, 
+            imageUrl : String
+        }
     }],
     followers : [{
-        userId : String, 
-        name : String, 
-        imageUrl : String 
+        _id : false,
+        field : {
+            userId : String, 
+            name : String, 
+            imageUrl : String
+        }
     }],
     subsribedClass : [{ 
-        classId : String,
-        title : String, 
-        tutorName : String, 
-        totalDuration : String,
-        feedback : String,
-        views : Number, // String or Number
-        classThumbnail : String
+        _id : false,
+        field : {
+            classId : String,
+            imageUrl : String,
+            title : String, 
+            tutorName : String, 
+            totalDuration : String,
+            reviewPercent : String,
+            subscriberCount : String // String or Number
+        }
     }],
-    group : [{
-        groupId : String,
-        groupName : String,
-        groupThumbnail : String,
-        memberCount : String
+    groups : [{
+        groupSchema
     }],
     discussion : [{
         discussionId : String,

@@ -8,6 +8,7 @@ var home = require('../constants/home');
 var classFunction = require('../functions/class-function');
 // discussion
 var discussionFunction = require('../functions/discussions-function');
+var groupFunction = require('../functions/group-function');
 
 // TODO
 var streamVideo = require('../functions/stream-video');
@@ -16,7 +17,26 @@ var streamVideo = require('../functions/stream-video');
 var mongoose = require('mongoose');
 var classes = require('../models/classes');
 
+var groups = require('../models/groups');
+var comments = require('../models/comments');
+
 module.exports = function(app) {
+
+    app.get('/ng', function(req,res) {
+        var newGroup = new groups({
+            groupName : "Illustrators",
+            groupThumbnail : "https://i.pinimg.com/736x/46/39/06/4639060eed251c2cc881e9351e5b75ef--line-illustration-portrait-illustration.jpg",
+            memberCount : "0",
+            comments : []
+        });
+
+        newGroup.save(function(err, group) {
+            if(!err) {
+                console.log("new group : " + group);
+                res.json(group);
+            }
+        })
+    });
 
     app.get('/ncls', function(req, res) {
 
@@ -201,6 +221,12 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/user/joinGroup', function(req, res) {
+        userFunction.joinGroup(req.body, req.query.userId, function(result) {
+            res.json(result);
+        });
+    });
+
     // main
     app.get('/home', function(req, res) {
         var list = req.query.types;
@@ -222,12 +248,23 @@ module.exports = function(app) {
         res.json(require('../constants/group'));
     });
 
-    app.get('/group/:id/:position', function(req, res) {
-        var id = req.params.id;
+    app.get('/group/getComments/:groupId/:position', function(req, res) {
+        var groupId = req.params.groupId;
         var position = req.params.position;
-        
-        require('../constants/group_chat');
+
+        groupFunction.getComments(groupId, position, function(result) {
+            res.json(result);
+        });
     })
+
+    app.post('/group/sendComment', function(req, res) {
+        var groupName = req.query.groupName;
+        var comment = req.body;
+
+        groupFunction.sendComment(groupName, comment, function(result) {
+            res.json(result);
+        });
+    });
 
     app.get('/discover', function(req, res) {
         res.json(require('../constants/discover'));
