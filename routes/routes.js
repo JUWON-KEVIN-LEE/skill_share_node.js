@@ -21,7 +21,6 @@ var groups = require('../models/groups');
 var comments = require('../models/comments');
 
 module.exports = function(app) {
-
     app.get('/ng', function(req,res) {
         var newGroup = new groups({
             groupName : "Illustrators",
@@ -223,6 +222,30 @@ module.exports = function(app) {
 
     app.post('/user/joinGroup', function(req, res) {
         userFunction.joinGroup(req.body, req.query.userId, function(result) {
+            res.json(result);
+        });
+    });
+
+    app.post('/user/setNickname', function(req, res) {
+        var userId = req.query.userId;
+        var nickname = req.query.nickname;
+
+        userFunction.setNickname(userId, nickname, function(result) {
+            res.json(result);
+        });
+    });
+
+    var multipart = require('connect-multiparty');
+    var multipartMiddleware = multipart({
+        uploadDir : 'public/images'
+    });
+
+    app.post('/user/uploadImageFile', multipartMiddleware, function(req, res) {
+        var userId = req.query.userId;
+        var temp = req.files["image"].path;
+        var path = temp.substring(7, temp.length);
+
+        userFunction.setImageUrl(userId, path, function(result) {
             res.json(result);
         });
     });

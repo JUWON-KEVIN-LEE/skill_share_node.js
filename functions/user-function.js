@@ -123,5 +123,45 @@ exports.joinGroup = function(group, userId, callback) {
                 })
             }
         })
-    })   
+    })
+}
+
+exports.setNickname = function(userId, nickname, callback) {
+    users.findById(userId, function(err, user) {
+        user.nickname = nickname;
+
+        user.save(function(err) {
+            if(!err) {
+                callback({
+                    result : 'success',
+                    message : 'server response : set nickname succeeded',
+                })
+            } else {
+                callback({
+                    result : 'failure',
+                    message : 'server response : set nickname failed',
+                })
+            }
+        });
+    });
+}
+
+exports.setImageUrl = function(userId, path, callback) {
+    users.findById(userId, function(err, user) {
+        user.imageUrl = path;
+
+        user.save(function(err) {
+            if(!err) {
+                callback({
+                    result : 'success',
+                    message : 'server response : set image url succeeded',
+                })
+            } else {
+                callback({
+                    result : 'failure',
+                    message : 'server response : set image url failed',
+                })
+            }
+        });
+    });
 }

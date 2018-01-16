@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
     followingSkills : [String],
     name : String,
     nickname : String,
-    pictureUrl : String,
+    imageUrl : String,
     following : [{ 
         _id : false,
         field : {
