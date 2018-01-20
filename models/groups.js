@@ -4,6 +4,7 @@ var groupSchema = mongoose.Schema({
     groupName : String,
     groupThumbnail : String,
     memberCount : String,
+    memberNicknames : [String],
     comments : [{
         userId : String,
         userName: String,

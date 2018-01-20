@@ -164,6 +164,34 @@ module.exports = function(app) {
     });
 
     // user
+    app.post('/user/subscribeClass', function(req, res) {
+        userFunction.subscribeClass(req.query.userId, req.query.classId, function(result) {
+            res.json(result);
+        });
+    });
+
+    app.post('/user/unsubscribeClass', function(req, res) {
+        userFunction.unsubscribeClass(req.query.userId, req.query.classId, function(result) {
+            res.json(result);
+        });
+    });
+
+    app.get('/user/authorization', authorization, function(req, res) {
+        userFunction.getMyInfo(req.token, function(result) {
+            res.json(result);
+        });
+    });
+
+    function authorization(req, res, next) {
+        var token = req.headers['authorization'];
+        if(token) {
+            req.token = token;
+            next();
+        } else {
+            res.send(403);
+        }
+    }
+
     app.get('/user/:id', function(req, res) {
         var userId = req.params.id;
         userFunction.getUser(userId, function(result) {
@@ -220,7 +248,20 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/user/followSkills', function(req, res) {
+        var userId = req.query.userId;
+        var skills = req.query.skills;
+        userFunction.followSkills(userId, skills, function(result) {
+            res.json(result);
+        });
+    });
+
     app.post('/user/joinGroup', function(req, res) {
+        
+        groupFunction.joinGroup(req.query.userNickname, function(result) {
+            
+        })
+
         userFunction.joinGroup(req.body, req.query.userId, function(result) {
             res.json(result);
         });
@@ -356,7 +397,7 @@ module.exports = function(app) {
 
         var discussionId = req.body.discussionId;
         var userId = req.body.userId;
-        
+
         discussionFunction.like(discussionId, userId, function(result) {
             res.json(result);
         });
@@ -376,6 +417,15 @@ module.exports = function(app) {
 
         gcmFunction.sendLikeMessage(message, resId, function(result) {
             console.log(result);
+        });
+    })
+
+    app.get('/seeAll/subscribers/:classId/:position', function(req, res) {
+        var classId = req.params.classId;
+        var position = req.params.position;
+
+        classFunction.getSubscribers(classId, position, function(result) {
+            res.json(result);
         });
     })
 

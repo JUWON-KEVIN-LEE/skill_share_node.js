@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var users = require('../models/users');
+var jwt = require('jsonwebtoken');
 
 exports.signUp = function(email, password, name, callback) {
     
@@ -10,38 +11,69 @@ exports.signUp = function(email, password, name, callback) {
         });
     
         users.find({email : email}, function(err, user) {
-            if(user.length != 0) {
+            if(err) {
                 callback({
                     result : 'failure',
-                    message : 'response : already existed email address',
+                    message : "Error occured : " + err
                 });
             } else {
-                newUser.save(function(err, user) {
-                    if(!err) {
-                        callback({
-                            result : 'success',
-                            message : 'response : sign-up succeeded',
-                            user : user
-                        });
-                    } else {
-                        callback({
-                            result : 'failure',
-                            message : 'response : sign-up failed by error & ' + err
-                        });
-                    }
-                });
+                if(user.length != 0) {
+                    callback({
+                        result : 'failure',
+                        message : "Response : Already existed email address"
+                    });
+                } else {
+                    newUser.save(function(err, user) {
+                        if(!err) {
+                            // user 정보를 이용해서 Token 생성
+                            user.token = jwt.sign({email : user.email}, 'secret');
+
+                            user.save(function(err, userWithToken) {
+                                console.log("after token user : " + userWithToken);
+                                callback({
+                                    result : 'success',
+                                    message : "Response : Sign up successfully",
+                                    data : userWithToken,
+                                    token : userWithToken.token
+                                });
+                            })
+                        } else {
+                            callback({
+                                result : 'failure',
+                                message : 'Error occured : ' + err
+                            });
+                        }
+                    });
+                }
             }
         });
 }
 
+exports.getMyInfo = function(token, callback) {
+    users.findOne({token : token}, function(err, user) {
+        if(err) {
+            callback({
+                result : 'failure',
+                message : 'Error occured : ' + err
+            });
+        } else {
+            callback({
+                result : 'success',
+                data : user
+            })
+        }
+    });
+}
+
 exports.signIn = function(email, password, callback) {
-    users.find({email : email, password : password}, function(err, user) {
+    users.findOne({email : email, password : password}, function(err, user) {
         if(user.length != 0) {
-            console.log("Sign In");
+            console.log("Sign In"+user);
             callback({
                 result : 'success',
                 message : 'response : sign-in succeeded',
-                user : user[0]
+                data : user,
+                token : user.token
             });
         } else {
             callback({
@@ -89,14 +121,31 @@ exports.followOrUnfollow = function(userId, tutor, callback) {
 
             user.save(function(err, user) {
                 if(!err) {
-                    console.log("succeed");
                     callback(user.following[user.following.length-1])
                 } else {
-                    console.log("failed");
                     callback(null)
                 }
             });
         }
+    });
+}
+
+exports.followSkills = function(userId, skills, callback) {
+    users.findById(userId, function(err, user) {
+        user.followingSkills = skills;
+
+        user.save(function(err, user) {
+            if(!err) {
+                console.log("user follow skill save");
+                callback({
+                    result : "success"
+                })
+            } else {
+                callback({
+                    result : "failure"
+                })
+            }
+        });
     });
 }
 
@@ -163,5 +212,78 @@ exports.setImageUrl = function(userId, path, callback) {
                 })
             }
         });
+    });
+}
+
+var classes = require('../models/classes');
+
+exports.subscribeClass = function(userId, classId, callback) {
+    classes.findById("5a4f1afc83004e24a841ce16", {_id: 1, imageUrl : 1, title : 1, tutorName:1, totalDuration : 1, reviewPercent : 1, subscriberCount : 1}
+        , function(err, classData) {
+        if(!err) {
+            users.findById(userId, function(err, user) {
+                
+                user.subscribedClasses.push({
+                    classId : classData._id,
+                    imageUrl : classData.imageUrl,
+                    title : classData.title,
+                    tutorName : classData.tutorName,
+                    totalDuration : classData.totalDuration,
+                    reviewPercent : classData.lessons.reviewPercent,
+                    subscriberCount : classData.lessons.subscriberCount
+                });
+
+                user.save(function(err) {
+                    if(!err) {
+                        callback({
+                            result : "success",
+                            data : user.subscribedClasses[user.subscribedClasses.length-1]
+                        });
+                    } else {
+                        callback({
+                            result : "failure",
+                            message : err
+                        });
+                    }
+                });
+            })
+        }
+    });
+}
+
+exports.unsubscribeClass = function(userId, classId, callback) {
+    classes.findById("5a4f1afc83004e24a841ce16", {_id: 1, imageUrl : 1, title : 1, tutorName:1, totalDuration : 1, reviewPercent : 1, subscriberCount : 1}
+        , function(err, classData) {
+        if(!err) {
+            users.findById(userId, function(err, user) {
+
+                var subscribedClass = {
+                    classId : classData._id,
+                    imageUrl : classData.imageUrl,
+                    title : classData.title,
+                    tutorName : classData.tutorName,
+                    totalDuration : classData.totalDuration,
+                    reviewPercent : classData.lessons.reviewPercent,
+                    subscriberCount : classData.lessons.subscriberCount
+                }
+
+                var index = user.subscribedClasses.indexOf(subscribedClass);
+                user.subscribedClasses.splice(index,1);
+
+                user.save(function(err) {
+                    if(!err) {
+                        callback({
+                            result : "success",
+                            data : subscribedClass
+                        });
+                    } else {
+                        callback({
+                            result : "failure",
+                            message : err
+                        });
+                    }
+                });
+            })
+        }
     });
 }

@@ -66,10 +66,12 @@ exports.like = function(discussionId, userId, callback) {
     discussions.findById(discussionId, function(err, discussion) {
         if(!err) {
             discussion.likeUsersIds.push(userId);
+            discussion.likeCount = discussion.likeUsersIds.length+"";
             discussion.save(function(err, discussion) {
                 if(!err) {
+                    var result = discussion.likeCount;
                     callback({
-                        likeCount : ""+discussion.likeUsersIds.length
+                        result
                     });
                 }
             })
@@ -82,10 +84,12 @@ exports.unlike = function(discussionId, userId, callback) {
         if(!err) {
             var index = discussion.likeUsersIds.indexOf(userId);
             discussion.likeUsersIds.splice(index, 1);
+            discussion.likeCount = discussion.likeUsersIds.length+"";
             discussion.save(function(err, discussion) {
                 if(!err) {
+                    var result = discussion.likeCount;
                     callback({
-                        likeCount : ""+discussion.likeUsersIds.length
+                        result
                     });
                 }
             })

@@ -31,7 +31,7 @@ var userSchema = mongoose.Schema({
             imageUrl : String
         }
     }],
-    subsribedClass : [{ 
+    subscribedClasses : [{ 
         _id : false,
         field : {
             classId : String,
@@ -60,7 +60,8 @@ var userSchema = mongoose.Schema({
         likes : Number, 
         projectThumbnail : String
     }],
-    registrationId : String
+    registrationId : String,
+    token : String
 }, {'strict' : false, 'versionKey' : false});
 
 // url / db 이름
